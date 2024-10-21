@@ -17,14 +17,14 @@ int ba_sumindex(int arr[], int n, int i1, int i2) {
     }
 }
 
-int subsIndex(int arr[] , int n , int i1 , int i2){
+int ba_subsIndex(int arr[] , int n , int i1 , int i2){
     if (i1 >= 0 && i1 < n && i2 >= 0 && i2 < n) {
         return arr[i1] - arr[i2];
     }
 
 }
 
-int multall(int arr[] , int n ){
+int ba_multall(int arr[] , int n ){
     int mult = 1 ;
     for(int i = 0 ; i< n ; i++){
         mult *= arr[i] ;
@@ -32,13 +32,13 @@ int multall(int arr[] , int n ){
 return mult ;
 }
 
-int multIndex(int arr[] , int n , int i1 , int i2){
+int ba_multIndex(int arr[] , int n , int i1 , int i2){
     if (i1 >= 0 && i1 < n && i2 >= 0 && i2 < n) {
         return arr[i1] * arr[i2];
     }
 }
 
-int divIndex(int arr[] , int n , int i1 , int i2){
+int ba_divIndex(int arr[] , int n , int i1 , int i2){
     if (i1 >= 0 && i1 < n && i2 >= 0 && i2 < n) {
         return arr[i1]/arr[i2];
     }
@@ -46,7 +46,7 @@ int divIndex(int arr[] , int n , int i1 , int i2){
 
 //          SORTING ALGO
 
-int increasing(int arr[] , int n ){
+int sa_increasing(int arr[] , int n ){
 
     for(int i = 0 ; i< n ; i++){
         for(int j = i+1 ; j< n ; j++){
@@ -56,6 +56,44 @@ int increasing(int arr[] , int n ){
                 arr[j] = temp ;
             }
         }
+    }
+}
+
+int sa_decreasing(int arr[] , int n){
+    for(int i = 0 ; i< n ; i++){
+        for(int j = i+1 ; j< n ; j++){
+            if (arr[i] < arr[j]) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp ;
+            }
+        }
+    }
+}
+
+int sa_leftshift(int arr[] , int n){
+    int temp = arr[0] ;
+    for(int i = 0 ; i< n ; i++){
+        arr[i] = arr[i+1] ;
+    }
+    arr[n-1] = temp ;
+
+}
+
+int sa_rightshift(int arr[] , int n){
+    int temp = arr[n-1] ;
+    for(int i = n-1 ; i>=0 ; i--){
+        arr[i] = arr[i-1] ;
+    }
+    arr[0] = temp ;
+}
+
+int sa_reverse(int arr[] , int n){
+    int temp ;
+    for(int i = 0 ; i< n/2 ; i++){
+        temp = arr[i] ;
+        arr[i] = arr[n-1-i] ;
+        arr[n-1-i] = temp ;
     }
 }
 
@@ -136,13 +174,13 @@ int main() {
                         int i1, i2;
                         printf("Enter the two indices (separated by space): ");
                         scanf("%d %d", &i1, &i2);
-                        int subs = subsIndex(arr , n , i1,i2) ;
+                        int subs = ba_subsIndex(arr , n , i1,i2) ;
                          printf("Substraction of elements at index %d and %d is: %d\n", i1, i2, subs);
                         break ;
                     }
 
                     case 4: {
-                        int mult = multall(arr , n) ;
+                        int mult = ba_multall(arr , n) ;
                          printf("\nMultiplication of all element is: %d\n\n", mult);
                          break ;
                     }
@@ -150,7 +188,7 @@ int main() {
                         int i1, i2;
                         printf("Enter the two indices (separated by space): ");
                         scanf("%d %d", &i1, &i2);
-                        int multindex = multIndex(arr , n , i1,i2) ;
+                        int multindex = ba_multIndex(arr , n , i1,i2) ;
                          printf("\nMultiplication of elements at index %d and %d is: %d\n", i1, i2, multindex);
                         break ;
                     }
@@ -158,7 +196,7 @@ int main() {
                         int i1, i2;
                         printf("Enter the two indices (separated by space): ");
                         scanf("%d %d", &i1, &i2);
-                        int divindex = divIndex(arr , n , i1,i2) ;
+                        int divindex = ba_divIndex(arr , n , i1,i2) ;
                         printf("\nDivision of elements at index %d and %d is: %d\n", i1, i2, divindex);
                         break ;
                     }
@@ -170,7 +208,7 @@ int main() {
                 break;
             }
 
-            case 2: {
+            case 2: { // Sorting Arrays
                 int option_SA;
                   printf("\n Sorting array: ");
                   printf("\n  Incresing order(Type 1) \n");
@@ -190,40 +228,44 @@ int main() {
                     case 0:
                         break;  // Exit to the main menu
                     case 1:
-
+                        sa_increasing(arr , n ) ;
+                        printf("Here is your Array in Increasing order: \n") ;
+                        for(int i = 0 ; i < n ; i++ ){
+                            printf("%d " , arr[i]) ;
+                        }
                         break;
+
                     case 2: {
-                        int i1, i2;
-                        printf("Enter the two indices (separated by space): ");
-                        scanf("%d %d", &i1, &i2);
-                        int sum = ba_sumindex(arr, n, i1, i2);
-                        if (sum != -1) {
-                            printf("Sum of elements at index %d and %d is: %d\n", i1, i2, sum);
-                        } else {
-                            printf("Error: Indices out of bounds.\n");
+                        sa_decreasing(arr , n) ;
+                        printf("Here is your Array in Decreasing order: \n") ;
+                        for(int i = 0 ; i < n ; i++ ){
+                            printf("%d " , arr[i]) ;
                         }
                         break;
                     }
+
                     case 3: {
-                        int i1, i2;
-                        printf("Enter the two indices (separated by space): ");
-                        scanf("%d %d", &i1, &i2);
-                        int subs = subsIndex(arr , n , i1,i2) ;
-                         printf("Substraction of elements at index %d and %d is: %d\n", i1, i2, subs);
+                        sa_leftshift(arr,n) ;
+                        printf("Here is your Array after Leftshifting: ") ;
+                        for(int i = 0 ; i < n ; i++ ){
+                            printf("%d " , arr[i]) ;
+                        }
                         break ;
                     }
 
                     case 4: {
-                        int mult = multall(arr , n) ;
-                         printf("\nMultiplication of all element is: %d\n\n", mult);
+                        sa_rightshift(arr,n) ;
+                        printf("Here is your Array after Rightshifting: ") ;
+                        for(int i = 0 ; i < n ; i++ ){
+                            printf("%d " , arr[i]) ;
+                        }
                          break ;
                     }
                     case 5: {
-                        int i1, i2;
-                        printf("Enter the two indices (separated by space): ");
-                        scanf("%d %d", &i1, &i2);
-                        int multindex = multIndex(arr , n , i1,i2) ;
-                         printf("\nMultiplication of elements at index %d and %d is: %d\n", i1, i2, multindex);
+                        sa_reverse(arr, n) ;
+                        for(int i = 0 ; i < n ; i++ ){
+                            printf("%d " , arr[i]) ;
+                        }
                         break ;
                     }
                     case 6: {
@@ -240,8 +282,6 @@ int main() {
                         printf("Invalid option. Please try again.\n");
                 }
                 break;
-            }
-
             }
 
 
@@ -262,7 +302,7 @@ int main() {
         }
 
 
-        printf("\nChoose operation to perform from the following list:\n");
+        printf("\n\nChoose operation to perform from the following list:\n");
         printf("Basic Arithmetic (Type 1)\n");
         printf("Sort the Array (Type 2)\n");
         printf("Edit the Array (Type 3)\n");
