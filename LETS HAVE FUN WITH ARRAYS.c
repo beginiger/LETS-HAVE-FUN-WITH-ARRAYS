@@ -98,8 +98,6 @@ int sa_reverse(int arr[] , int n){
 }
 
 
-int ea_insertno(int arr[] , int n , int index );
-
 // To Find
 int tfa_larno(int arr[], int n )
 {
@@ -131,8 +129,84 @@ float tfa_average(int arr[], int n )
         sum = sum + arr[i] ;
     }
     float avg = sum / n ;
-  returnn (avg) ;
+  return (avg) ;
 }
+
+int tfa_everyfreq(int arr[] , int n){
+  int c = 0 ;
+  int v1[n];
+  for(int i = 0 ; i < n ; i++ )
+  {
+    v1[i] = 0 ;
+  }
+  int store_num[n];
+  int store_freq[n];
+  for(int i =0 ; i<n ; i++ )
+  { int count = 0;
+    if(v1[i] != 1)
+    {
+      store_num[c] = arr[i] ;
+
+      for(int j=0; j<n ;j++)
+      {
+      if(arr[i] == arr[j])
+      {
+      count++ ;
+      v1[j] = 1 ;
+      }
+      }
+      store_freq[c] = count ;
+      c++ ;
+    }
+  }
+  for(int i = 0 ; i < c ; i++  )
+  {
+    printf("Frequency of %d is %d . \n", store_num[i] , store_freq[i]);
+  }
+
+}
+
+int tfa_larfreq(int arr[] , int n){
+  int c = 0 ;
+  int v1[n];
+  for(int i = 0 ; i < n ; i++ )
+  {
+    v1[i] = 0 ;
+  }
+  int store_num[n];
+  int store_freq[n];
+  for(int i =0 ; i<n ; i++ )
+  { int count = 0;
+    if(v1[i] != 1)
+    {
+      store_num[c] = arr[i] ;
+
+      for(int j=0; j<n ;j++)
+      {
+      if(arr[i] == arr[j])
+      {
+      count++ ;
+      v1[j] = 1 ;
+      }
+      }
+      store_freq[c] = count ;
+      c++ ;
+    }
+  }
+  int max = 0 ;
+  int num ;
+  for(int i = 0 ; i < c ; i++  )
+  {
+    if(max < store_freq[i])
+    {
+      max = store_freq[i];
+      num = store_num[i];
+    }
+  }
+  printf("The number with highest frequency is %d and its frequency is %d ", num , max);
+
+}
+
 
 int main() {
 
@@ -313,22 +387,21 @@ int main() {
             }
 
 
-            case 3:{
-                int option_SA;
+            case 3:{ // To Find
+                int option_TFA;
                   printf("\n To Find: ");
-                  printf("\n  Largest no(Type 1) \n");
+                  printf("\n  Largest no (Type 1) \n");
                   printf("  Smallest no (Type 2) \n");
                   printf("  Average of array (Type 3) \n");
-                  printf("  Right Shift (Type 4) \n");
-                  printf("  Reverse an array (Type 5) \n");
+                  printf("  Frequency of each element (Type 4) \n");
+                  printf("  Element with Highest Frequency (Type 5) \n");
                   printf("  Exit to main menu (Type 0)\n");
 
                 printf("Enter your option: ");
-                scanf("%d", &option_SA);
+                scanf("%d", &option_TFA);
                 printf("\n");
 
-                // Sorting Array operations
-                switch(option_SA) {
+                switch(option_TFA) {
                     case 0:
                         break;  // Exit to the main menu
                     case 1:{
@@ -347,22 +420,14 @@ int main() {
                     }
 
                     case 4: {
-                        sa_rightshift(arr,n) ;
-                        printf("Here is your Array after Rightshifting: ") ;
-                        for(int i = 0 ; i < n ; i++ ){
-                            printf("%d " , arr[i]) ;
-                        }
-                         break ;
+                        tfa_everyfreq(arr,n) ;
+                        break ;
                     }
                     case 5: {
-                        sa_reverse(arr, n) ;
-                        for(int i = 0 ; i < n ; i++ ){
-                            printf("%d " , arr[i]) ;
-                        }
+                        tfa_larfreq(arr,n) ;
                         break ;
                     }
 
-                    //end of basic arithemic
                     default:
                         printf("Invalid option. Please try again.\n");
                 }
@@ -385,8 +450,8 @@ int main() {
         printf("\n\nChoose operation to perform from the following list:\n");
         printf("Basic Arithmetic (Type 1)\n");
         printf("Sort the Array (Type 2)\n");
-        printf("Edit the Array (Type 3)\n");
-        printf("To Find (Type 4)\n");
+        printf("To Find (Type 3)\n");
+        printf("Edit Array (Type 4)\n");
         printf("Special numbers in Array (Type 5)\n");
         printf("Exit (Type 0)\n");
 
