@@ -97,6 +97,43 @@ int sa_reverse(int arr[] , int n){
     }
 }
 
+
+int ea_insertno(int arr[] , int n , int index );
+
+// To Find
+int tfa_larno(int arr[], int n )
+{
+    int max  = arr[0];
+    for(int i = 0 ; i < n ; i++ )
+    {
+        if(arr[i] > max)
+        max = arr[i];
+    }
+    return max ;
+}
+
+int tfa_smallnum (int arr[], int n )
+{
+    int min  = arr[0];
+    for(int i = 0 ; i < n ; i++ )
+    {
+        if(arr[i] < min)
+        min = arr[i];
+    }
+  return (min) ;
+}
+
+float tfa_average(int arr[], int n )
+{
+    float sum = 0;
+    for(int i = 0 ; i < n ; i++ )
+    {
+        sum = sum + arr[i] ;
+    }
+    float avg = sum / n ;
+  returnn (avg) ;
+}
+
 int main() {
 
     printf("\t\t\t-------- LET'S HAVE FUN WITH ARRAYS -------------\n\n");
@@ -125,8 +162,8 @@ int main() {
     printf("\nChoose operation to perform from the following list:\n\n");
     printf("Basic Arithmetic (Type 1)\n");
     printf("Sort the Array (Type 2)\n");
-    printf("Edit the Array (Type 3)\n");
-    printf("To Find (Type 4)\n");
+    printf("To Find (Type 3)\n");
+    printf("Edit Array (Type 4)\n");
     printf("Special numbers in Array (Type 5)\n");
     printf("Exit (Type 0)\n");
 
@@ -216,7 +253,6 @@ int main() {
                   printf("  Left Shift (Type 3) \n");
                   printf("  Right Shift (Type 4) \n");
                   printf("  Reverse an array (Type 5) \n");
-                  printf("  Division by indexing (Type 6) \n");
                   printf("  Exit to main menu (Type 0)\n");
 
                 printf("Enter your option: ");
@@ -268,14 +304,6 @@ int main() {
                         }
                         break ;
                     }
-                    case 6: {
-                        int i1, i2;
-                        printf("Enter the two indices (separated by space): ");
-                        scanf("%d %d", &i1, &i2);
-                        int divindex = divIndex(arr , n , i1,i2) ;
-                        printf("\nDivision of elements at index %d and %d is: %d\n", i1, i2, divindex);
-                        break ;
-                    }
 
                     //end of basic arithemic
                     default:
@@ -285,9 +313,61 @@ int main() {
             }
 
 
-            case 3:
-                printf("Editing functionality ");
+            case 3:{
+                int option_SA;
+                  printf("\n To Find: ");
+                  printf("\n  Largest no(Type 1) \n");
+                  printf("  Smallest no (Type 2) \n");
+                  printf("  Average of array (Type 3) \n");
+                  printf("  Right Shift (Type 4) \n");
+                  printf("  Reverse an array (Type 5) \n");
+                  printf("  Exit to main menu (Type 0)\n");
+
+                printf("Enter your option: ");
+                scanf("%d", &option_SA);
+                printf("\n");
+
+                // Sorting Array operations
+                switch(option_SA) {
+                    case 0:
+                        break;  // Exit to the main menu
+                    case 1:{
+                        printf("Largest no in array is: %d" , tfa_larno(arr,n));
+                        break;
+                    }
+
+                    case 2: {
+                        printf("Smallest no in array is: %d" , tfa_smallnum(arr,n));
+                        break;
+                    }
+
+                    case 3: {
+                        printf("Average of array is: %d" , tfa_average(arr,n));
+                        break ;
+                    }
+
+                    case 4: {
+                        sa_rightshift(arr,n) ;
+                        printf("Here is your Array after Rightshifting: ") ;
+                        for(int i = 0 ; i < n ; i++ ){
+                            printf("%d " , arr[i]) ;
+                        }
+                         break ;
+                    }
+                    case 5: {
+                        sa_reverse(arr, n) ;
+                        for(int i = 0 ; i < n ; i++ ){
+                            printf("%d " , arr[i]) ;
+                        }
+                        break ;
+                    }
+
+                    //end of basic arithemic
+                    default:
+                        printf("Invalid option. Please try again.\n");
+                }
                 break;
+            }
 
             case 4:
                 printf("Finding functionality ");
