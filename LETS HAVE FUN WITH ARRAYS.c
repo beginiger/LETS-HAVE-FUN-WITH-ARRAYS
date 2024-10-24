@@ -207,6 +207,156 @@ int tfa_larfreq(int arr[] , int n){
 
 }
 
+int tfa_lowestfreq(int arr[] , int n){
+
+  int c = 0 ;
+  int v1[n];
+  for(int i = 0 ; i < n ; i++ )
+  {
+    v1[i] = 0 ;
+  }
+  int store_num[n];
+  int store_freq[n];
+  for(int i =0 ; i<n ; i++ )
+  { int count = 0;
+    if(v1[i] != 1)
+    {
+      store_num[c] = arr[i] ;
+
+      for(int j=0; j<n ;j++)
+      {
+      if(arr[i] == arr[j])
+      {
+      count++ ;
+      v1[j] = 1 ;
+      }
+      }
+      store_freq[c] = count ;
+      c++ ;
+    }
+  }
+  int min = store_freq[0] ;
+  int num ;
+  for(int i = 0 ; i < c ; i++  )
+  {
+    if(min > store_freq[i])
+    {
+      min = store_freq[i];
+      num = store_num[i];
+    }
+  }
+  printf("The numebr with lowest frequency is %d and its frequceny is %d ", num , min);
+
+}
+
+// Special Numbers
+int sn_special_num(int arr[], int n )
+{
+    int c = 0 ;
+    int store[n];
+    for(int i = 0 ; i <n ; i++ )
+    { int a = arr[i] ;
+      int sum = 0;
+        while (a > 0 )
+        {  int fact = 1;
+             int rem = a%10 ;
+            for(int j = 1 ; j <= rem ; j++ )
+                fact = fact*j ;
+            sum = sum + fact ;
+            if (arr[i] == sum)
+            {
+                store[c] = arr[i];
+                c++ ;
+            }
+            a = a/10 ;
+        }
+    }
+    printf("The special numbers among the array are : ");
+    for(int k = 0 ; k < c ; k++)
+    {
+        printf("%d ", store[k]);
+    }
+}
+
+
+int sn_armstrong(int arr[], int n )
+{
+    int c = 0 ;
+    int store[n];
+    for(int i = 0 ; i <n ; i++ )
+    { int a = arr[i] ;
+      int sum = 0;
+        while (a > 0 )
+        {  int fact = 1;
+             int rem = a%10 ;
+             sum = sum + pow(rem,3);
+            if (arr[i] == sum)
+            {
+                store[c] = arr[i];
+                c++ ;
+            }
+            a = a/10 ;
+        }
+    }
+    printf("The armstrong among the array are : ");
+    for(int k = 0 ; k < c ; k++)
+    {
+        printf("%d ", store[k]);
+    }
+}
+
+int sn_pallindrome(int arr[], int n )
+{
+    int c = 0 ;
+    int store[n];
+    for(int i = 0 ; i <n ; i++ )
+    { int a = arr[i] ;
+      int sum = 0;
+        while (a > 0 )
+        {  int fact = 1;
+             int rem = a%10 ;
+             sum = (sum*10) + rem;
+            if (arr[i] == sum)
+            {
+                store[c] = arr[i];
+                c++ ;
+            }
+            a = a/10 ;
+        }
+    }
+    printf("The pallindrome among the array are : ");
+    for(int k = 0 ; k < c ; k++)
+    {
+        printf("%d ", store[k]);
+    }
+}
+
+
+int sn_Niven_num(int arr[], int n )
+{
+    int c = 0 ;
+    int store[n];
+    for(int i = 0 ; i <n ; i++ )
+    { int a = arr[i] ;
+      int sum = 0;
+        while (a > 0 )
+        {  int fact = 1;
+             int rem = a%10 ;
+             sum = sum + rem;
+             a = a/10 ;
+        }
+        if (arr[i] % sum == 0 )
+            {
+                store[c] = arr[i];
+                c++ ;
+            }
+    }
+    printf("The Niven among the array are : ");
+    for(int k = 0 ; k < c ; k++)
+    {
+        printf("%d ", store[k]);
+    }
+}
 
 int main() {
 
@@ -317,7 +467,7 @@ int main() {
                         printf("Invalid option. Please try again.\n");
                 }
                 break;
-            }
+            }//
 
             case 2: { // Sorting Arrays
                 int option_SA;
@@ -395,6 +545,7 @@ int main() {
                   printf("  Average of array (Type 3) \n");
                   printf("  Frequency of each element (Type 4) \n");
                   printf("  Element with Highest Frequency (Type 5) \n");
+                  printf("  Element with Lowest Frequency (Type 6) \n");
                   printf("  Exit to main menu (Type 0)\n");
 
                 printf("Enter your option: ");
@@ -428,6 +579,10 @@ int main() {
                         break ;
                     }
 
+                    case 6: {
+                        tfa_lowestfreq(arr,n) ;
+                    }
+
                     default:
                         printf("Invalid option. Please try again.\n");
                 }
@@ -438,10 +593,60 @@ int main() {
                 printf("Finding functionality ");
                 break;
 
-            case 5:
-                printf("Special numbers functionality ");
-                break;
+            case 5:{ // Special numbers
+                int option_SN;
+                  printf("\n Special Numbers: ");
+                  printf("\n  Special no (Type 1) \n");
+                  printf("  Armstrong no. (Type 2) \n");
+                  printf("  Pallindrome (Type 3) \n");
+                  printf("  Niven no. (Type 4) \n");
+                  printf("  Multiply by indexing (Type 5) \n");
+                  printf("  Division by indexing (Type 6) \n");
+                  printf("  Exit to main menu (Type 0)\n");
 
+                printf("Enter your option: ");
+                scanf("%d", &option_SN);
+                printf("\n");
+
+                //Special no switch operations switch
+                switch(option_SN) {
+                    case 0:
+                        break;  // Exit to the main menu
+                    case 1:
+                        sn_special_num(arr, n) ;
+                        break;
+                    case 2: {
+                        sn_armstrong(arr, n) ;
+                        break;
+                    }
+                    case 3: {
+                        sn_pallindrome(arr , n) ;
+                        break ;
+                    }
+
+                    case 4: {
+                        sn_Niven_num(arr , n );
+                        break ;
+                    }
+                    case 5: {
+                        sn_Niven_num(arr , n );
+                        break ;
+                    }
+                    case 6: {
+                        int i1, i2;
+                        printf("Enter the two indices (separated by space): ");
+                        scanf("%d %d", &i1, &i2);
+                        int divindex = ba_divIndex(arr , n , i1,i2) ;
+                        printf("\nDivision of elements at index %d and %d is: %d\n", i1, i2, divindex);
+                        break ;
+                    }
+
+                    //end of basic arithemic
+                    default:
+                        printf("Invalid option. Please try again.\n");
+                }
+                break;
+            }
             default:
                 printf("Invalid option. Please try again.\n");
         }
