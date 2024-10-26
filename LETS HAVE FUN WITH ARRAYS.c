@@ -358,6 +358,107 @@ int sn_Niven_num(int arr[], int n )
     }
 }
 
+// Edit array
+
+void ea_insert(int arr[] , int n , int index, int nu){
+    if (index < 0 || index > n) {
+        printf("Invalid index\n");
+        return;
+    }
+
+    for (int i = n; i > index; i--) {
+        arr[i] = arr[i - 1];
+    }
+
+    arr[index] = nu;
+    (n)++;
+
+    printf("\nYour array is: ");
+    for(int i = 0 ; i< n ; i++){
+    printf("%d " , arr[i]) ;
+    }
+}
+
+
+void ea_delete(int arr[], int n, int index) {
+    if (index < 0 || index >= n) {
+        printf("Invalid index\n");
+        return;
+    }
+
+    for (int i = index; i < n - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+
+    (n)--;
+
+    printf("\nYour array is: ");
+    for(int i = 0 ; i< n ; i++){
+    printf("%d " , arr[i]) ;
+    }
+}
+
+void ea_swap(int arr[], int n, int index1, int index2) {
+    int temp = arr[index1];
+    arr[index1] = arr[index2];
+    arr[index2] = temp;
+
+    printf("\nArray after swapping elements at index %d and %d:", index1, index2);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+void ea_update(int arr[], int n, int old_val, int new_val) {
+    int updated = 0;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == old_val) {
+            arr[i] = new_val;
+            updated = 1;
+        }
+    }
+
+    if (updated) {
+        printf("Array after updating elements: ");
+        for (int i = 0; i < n; i++) {
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
+    } else {
+        printf("Value %d not found in the array.\n", old_val);
+    }
+}
+
+void ea_updateindex(int arr[], int n, int index, int new_val) {
+    if (index < 0 || index >= n) {
+        printf("\nInvalid index. Please enter an index between 0 and %d.\n", n - 1);
+        return;
+    }
+
+    arr[index] = new_val;
+
+    printf("\nArray after updating element at index %d:", index);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+void ea_merge(int arr[] , int n , int arr1[] , int n1){
+
+    for (int i = 0; i < n1; i++) {
+        arr[n + i] = arr1[i];
+    }
+
+    printf("\nhere is your Merged Array: ") ;
+    for (int i = 0; i < n+n1; i++) {
+        printf("%d ", arr[i]);
+    }
+
+}
+
+
 int main() {
 
     printf("\t\t\t-------- LET'S HAVE FUN WITH ARRAYS -------------\n\n");
@@ -589,9 +690,120 @@ int main() {
                 break;
             }
 
-            case 4:
-                printf("Finding functionality ");
+            case 4:{ // Edit Array
+                int option_EA;
+                  printf("\n  Edit Your Array: ");
+                  printf("\n  Insert a Number (Type 1) \n");
+                  printf("  Delete Number (Type 2) \n");
+                  printf("  Swap Elements (Type 3) \n");
+                  printf("  Update No. (Type 4) \n");
+                  printf("  Merge Another Array (Type 5) \n");
+                  printf("  Element with Lowest Frequency (Type 6) \n");
+                  printf("  Exit to main menu (Type 0)\n");
+
+                printf("Enter your option: ");
+                scanf("%d", &option_EA);
+                printf("\n");
+
+                switch(option_EA) {
+                    case 0:
+                        break;
+                    case 1:{
+                        int index ;
+                        int nu ;
+                        printf("Enter the index:");
+                        scanf("%d" , &index) ;
+                        printf("Enter the number to be inserted: ");
+                        scanf("%d",  &nu) ;
+                        ea_insert(arr,n,index,nu) ;
+
+                        break;
+                    }
+
+                    case 2: {
+                       int index ;
+                        printf("Enter the index to delete:");
+                        scanf("%d" , &index) ;
+                        ea_delete(arr,n,index) ;
+
+                        break;
+                    }
+
+                    case 3: {
+
+                        int index1, index2;
+
+                        printf("Enter the first index to swap: ");
+                        scanf("%d", &index1);
+                        printf("Enter the second index to swap: ");
+                        scanf("%d", &index2);
+
+                        if (index1 >= 0 && index1 < n && index2 >= 0 && index2 < n) {
+                            ea_swap(arr, n, index1, index2);
+                        }
+                        else {
+                            printf("Invalid indices. Please enter indices between 0 and %d.\n", n - 1);
+                        }
+                        break ;
+                    }
+
+                    case 4: {
+                        printf("Update by Value (Type 1)\n");
+                        printf("Update by Indexing (Type 2)\n\n");
+                        int upchoie ;
+                        printf("Enter your choice: ") ;
+                        scanf("%d" , &upchoie) ;
+
+                         switch(upchoie){
+                            case 1: {
+                                 int old_val, new_val;
+                                printf("Enter the value to update: ");
+                                scanf("%d", &old_val);
+                                printf("Enter the new value: ");
+                                scanf("%d", &new_val);
+
+                                ea_update(arr, n, old_val, new_val);
+                                break ;
+
+                            }
+                            case 2: {
+                                  int index, new_val;
+                                  printf("Enter the index to update: ");
+                                  scanf("%d", &index);
+                                  printf("Enter the new value: ");
+                                  scanf("%d", &new_val);
+
+                                  ea_updateindex(arr, n, index, new_val);
+                                }
+
+                        }
+
+                        break ;
+                    }
+                    case 5: {
+                        int n1 ;
+                        printf("Enter the size of 2nd array: ") ;
+                        scanf("%d" , &n1) ;
+                        int arr1[n1] ;
+
+                        for(int i = 0; i < n1 ; i++) {
+                            printf("Enter the %d element of your array: ", i + 1);
+                            scanf("%d", &arr[i]);
+                        }
+
+                        ea_merge(arr,n,arr1,n1) ;
+                        break ;
+                    }
+
+                    case 6: {
+                        tfa_lowestfreq(arr,n) ;
+                    }
+
+                    default:
+                        printf("Invalid option. Please try again.\n");
+                }
                 break;
+            }
 
             case 5:{ // Special numbers
                 int option_SN;
