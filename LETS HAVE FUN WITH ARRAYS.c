@@ -439,25 +439,24 @@ void ea_updateindex(int arr[], int n, int index, int new_val) {
 
     arr[index] = new_val;
 
-    printf("\nArray after updating element at index %d:", index);
+    printf("\n\nArray after updating element at index %d:", index);
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
 }
-void ea_merge(int arr[] , int n , int arr1[] , int n1){
 
-    for (int i = 0; i < n1; i++) {
-        arr[n + i] = arr1[i];
-    }
+void ea_append(int *arr , int n , int append){
 
-    printf("\nhere is your Merged Array: ") ;
-    for (int i = 0; i < n+n1; i++) {
+    arr[n] = append ;
+    n++ ;
+
+    printf("\n\nArray after Appending: ");
+    for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
-
+    printf("\n");
 }
-
 
 int main() {
 
@@ -637,7 +636,6 @@ int main() {
                 break;
             }
 
-
             case 3:{ // To Find
                 int option_TFA;
                   printf("\n To Find: ");
@@ -697,8 +695,7 @@ int main() {
                   printf("  Delete Number (Type 2) \n");
                   printf("  Swap Elements (Type 3) \n");
                   printf("  Update No. (Type 4) \n");
-                  printf("  Merge Another Array (Type 5) \n");
-                  printf("  Element with Lowest Frequency (Type 6) \n");
+                  printf("  Append a No. (Type 5) \n");
                   printf("  Exit to main menu (Type 0)\n");
 
                 printf("Enter your option: ");
@@ -781,17 +778,11 @@ int main() {
                         break ;
                     }
                     case 5: {
-                        int n1 ;
-                        printf("Enter the size of 2nd array: ") ;
-                        scanf("%d" , &n1) ;
-                        int arr1[n1] ;
+                        int apendno ;
+                        printf("Enter the no to Append: ") ;
+                        scanf("%d" , &apendno) ;
 
-                        for(int i = 0; i < n1 ; i++) {
-                            printf("Enter the %d element of your array: ", i + 1);
-                            scanf("%d", &arr[i]);
-                        }
-
-                        ea_merge(arr,n,arr1,n1) ;
+                        ea_append(arr,n,apendno) ;
                         break ;
                     }
 
@@ -812,16 +803,15 @@ int main() {
                   printf("  Armstrong no. (Type 2) \n");
                   printf("  Pallindrome (Type 3) \n");
                   printf("  Niven no. (Type 4) \n");
-                  printf("  Multiply by indexing (Type 5) \n");
-                  printf("  Division by indexing (Type 6) \n");
+                  printf("   (Type 5) \n");
+                  printf("   (Type 6) \n");
                   printf("  Exit to main menu (Type 0)\n");
 
                 printf("Enter your option: ");
                 scanf("%d", &option_SN);
                 printf("\n");
 
-                //Special no switch operations switch
-                switch(option_SN) {
+                switch(option_SN) { //Special no
                     case 0:
                         break;  // Exit to the main menu
                     case 1:
