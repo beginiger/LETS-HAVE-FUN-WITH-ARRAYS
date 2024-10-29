@@ -358,6 +358,40 @@ int sn_Niven_num(int arr[], int n )
     }
 }
 
+int sn_smithno(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        int digitsum = 0;
+        int a = arr[i];
+        while (a > 0) {
+            digitsum += a % 10;
+            a /= 10;
+        }
+
+        int primeSum = 0;
+        int temp = arr[i];
+        while (temp % 2 == 0) {
+            primeSum += 2;
+            temp /= 2;
+        }
+
+        for (int j = 3; j * j <= temp; j += 2) {
+            while (temp % j == 0) {
+                primeSum += j;
+                temp /= j;
+            }
+        }
+
+        if (temp > 2) {
+            primeSum += temp;
+        }
+
+        if (digitsum == primeSum) {
+            printf("%d is a Smith number\n", arr[i]);
+        }
+    }
+    return 0;
+}
+
 // Edit array
 
 void ea_insert(int arr[] , int n , int index, int nu){
@@ -803,7 +837,7 @@ int main() {
                   printf("  Armstrong no. (Type 2) \n");
                   printf("  Pallindrome (Type 3) \n");
                   printf("  Niven no. (Type 4) \n");
-                  printf("   (Type 5) \n");
+                  printf("  Smith no. (Type 5) \n");
                   printf("   (Type 6) \n");
                   printf("  Exit to main menu (Type 0)\n");
 
@@ -831,7 +865,7 @@ int main() {
                         break ;
                     }
                     case 5: {
-                        sn_Niven_num(arr , n );
+                        sn_smithno(arr , n );
                         break ;
                     }
                     case 6: {
