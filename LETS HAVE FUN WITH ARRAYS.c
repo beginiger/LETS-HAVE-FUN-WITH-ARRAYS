@@ -392,6 +392,36 @@ int sn_smithno(int arr[], int n) {
     return 0;
 }
 
+int sn_sophie_num(int arr[] , int n )
+{
+    int arr2[n];
+    int c = 0 ;
+    for (int i = 0 ; i< n ; i++ )
+    {
+        int a = 2*arr[i]+1;
+        int count = 0 ;
+        for(int j = 1 ; j <= a ; j++ )
+        { if(a%j==0)
+          count++;
+        }
+        if(count == 2)
+        {
+            arr2[c] = arr[i];
+            c++ ;
+        }
+    }
+    if(c == 0)
+        printf("No Sophie German prime number is present in the entered array  ");
+    else
+       {
+           printf("The Sophie German prime number in the array are ");
+           for(int i = 0 ; i < c ; i++ )
+            printf("%d ", arr2[i]);
+
+       }
+
+}
+
 // Edit array
 
 void ea_insert(int arr[] , int n , int index, int nu){
@@ -868,6 +898,7 @@ int main() {
                         sn_smithno(arr , n );
                         break ;
                     }
+
                     case 6: {
                         int i1, i2;
                         printf("Enter the two indices (separated by space): ");
