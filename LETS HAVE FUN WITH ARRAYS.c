@@ -3,17 +3,22 @@
 
 // Function to sum all elements in the array
 int ba_sumall(int arr[], int n)
+
  {
     int sum = 0;
     for(int i = 0; i < n; i++)
+
     {
         sum += arr[i];
     }
+
     return sum;
 }
 
 // Function to sum two elements based on their indices
+
 int ba_sumindex(int arr[], int n, int i1, int i2)
+
     {
         // Check if the indices are within the valid rangE
         if (i1 >= 0 && i1 < n && i2 >= 0 && i2 < n)
@@ -23,8 +28,10 @@ int ba_sumindex(int arr[], int n, int i1, int i2)
     }
 
 int ba_subsIndex(int arr[] , int n , int i1 , int i2)
+
     {
         if (i1 >= 0 && i1 < n && i2 >= 0 && i2 < n)
+
         {
             return arr[i1] - arr[i2];
         }
@@ -32,26 +39,33 @@ int ba_subsIndex(int arr[] , int n , int i1 , int i2)
     }
 
 int ba_multall(int arr[] , int n )
+
     {
         int mult = 1 ;
         for(int i = 0 ; i< n ; i++)
+
         {
             mult *= arr[i] ;
         }
+
         return mult ;
     }
 
 int ba_multIndex(int arr[] , int n , int i1 , int i2)
+
         {
             if (i1 >= 0 && i1 < n && i2 >= 0 && i2 < n)
+
             {
                 return arr[i1] * arr[i2];
             }
         }
 
 int ba_divIndex(int arr[] , int n , int i1 , int i2)
+
     {
         if (i1 >= 0 && i1 < n && i2 >= 0 && i2 < n)
+
         {
             return arr[i1]/arr[i2];
         }
@@ -60,31 +74,44 @@ int ba_divIndex(int arr[] , int n , int i1 , int i2)
 //          SORTING ALGO
 
 int sa_increasing(int arr[] , int n )
+
     {
         for(int i = 0 ; i< n ; i++)
+
         {
             for(int j = i+1 ; j< n ; j++)
+
             {
                 if (arr[i] > arr[j])
+
                 {
+
                     int temp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = temp ;
+
                 }
             }
         }
     }
 
 int sa_decreasing(int arr[] , int n)
+
     {
         for(int i = 0 ; i< n ; i++)
+
         {
             for(int j = i+1 ; j< n ; j++)
+
             {
                 if (arr[i] < arr[j])
+
                 {
+
                     int temp = arr[i];
+
                     arr[i] = arr[j];
+
                     arr[j] = temp ;
                 }
             }
@@ -92,30 +119,39 @@ int sa_decreasing(int arr[] , int n)
     }
 
 int sa_leftshift(int arr[] , int n)
+
     {
         int temp = arr[0] ;
         for(int i = 0 ; i< n ; i++)
+
         {
             arr[i] = arr[i+1] ;
         }
+
         arr[n-1] = temp ;
 
     }
 
 int sa_rightshift(int arr[] , int n)
+
     {
+
         int temp = arr[n-1] ;
         for(int i = n-1 ; i>=0 ; i--)
+
         {
             arr[i] = arr[i-1] ;
         }
+
         arr[0] = temp ;
     }
 
 int sa_reverse(int arr[] , int n)
+
     {
         int temp ;
         for(int i = 0 ; i< n/2 ; i++)
+
         {
             temp = arr[i] ;
             arr[i] = arr[n-1-i] ;
@@ -127,20 +163,25 @@ int sa_reverse(int arr[] , int n)
             // To Find
 
 int tfa_larno(int arr[], int n )
+
     {
         int max  = arr[0];
         for(int i = 0 ; i < n ; i++ )
+
         {
             if(arr[i] > max)
             max = arr[i];
         }
+
         return max ;
     }
 
 int tfa_smallnum (int arr[], int n )
+
     {
         int min  = arr[0];
         for(int i = 0 ; i < n ; i++ )
+
         {
             if(arr[i] < min)
             min = arr[i];
@@ -148,27 +189,37 @@ int tfa_smallnum (int arr[], int n )
         return (min) ;
     }
 
-float tfa_average(int arr[], int n) {
+float tfa_average(int arr[], int n)
+
+ {
     float sum = 0;
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+
+        {
+
         sum += arr[i];
-    }
+
+        }
     float avg = sum / n;
     return avg;
 }
 
 
 int tfa_everyfreq(int arr[] , int n)
+
     {
         int c = 0 ;
         int v1[n];
         for(int i = 0 ; i < n ; i++ )
+
         {
             v1[i] = 0 ;
         }
+
         int store_num[n];
         int store_freq[n];
         for(int i =0 ; i<n ; i++ )
+
         {
             int count = 0;
             if(v1[i] != 1)
@@ -176,18 +227,23 @@ int tfa_everyfreq(int arr[] , int n)
                 store_num[c] = arr[i] ;
 
                 for(int j=0; j<n ;j++)
+
                 {
+
                     if(arr[i] == arr[j])
                     {
                         count++ ;
                         v1[j] = 1 ;
                     }
                 }
+
                 store_freq[c] = count ;
                 c++ ;
             }
         }
+
         for(int i = 0 ; i < c ; i++  )
+
         {
             printf("\n\nFrequency of %d is %d . \n\n", store_num[i] , store_freq[i]);
         }
@@ -195,16 +251,21 @@ int tfa_everyfreq(int arr[] , int n)
     }
 
 int tfa_larfreq(int arr[] , int n)
+
     {
         int c = 0 ;
         int v1[n];
         for(int i = 0 ; i < n ; i++ )
+
         {
             v1[i] = 0 ;
         }
+
         int store_num[n];
         int store_freq[n];
+
         for(int i =0 ; i<n ; i++ )
+
         {
             int count = 0;
             if(v1[i] != 1)
@@ -212,8 +273,10 @@ int tfa_larfreq(int arr[] , int n)
                 store_num[c] = arr[i] ;
 
                 for(int j=0; j<n ;j++)
+
                 {
                     if(arr[i] == arr[j])
+
                     {
                         count++ ;
                         v1[j] = 1 ;
@@ -238,23 +301,29 @@ int tfa_larfreq(int arr[] , int n)
     }
 
 int tfa_lowestfreq(int arr[] , int n)
+
     {
         int c = 0 ;
         int v1[n];
         for(int i = 0 ; i < n ; i++ )
+
         {
             v1[i] = 0 ;
         }
+
         int store_num[n];
         int store_freq[n];
         for(int i =0 ; i<n ; i++ )
+
         {
             int count = 0;
             if(v1[i] != 1)
+
             {
                 store_num[c] = arr[i] ;
 
                 for(int j=0; j<n ;j++)
+
                 {
                     if(arr[i] == arr[j])
                     {
@@ -262,6 +331,7 @@ int tfa_lowestfreq(int arr[] , int n)
                     v1[j] = 1 ;
                     }
                 }
+
                 store_freq[c] = count ;
                 c++ ;
             }
@@ -269,8 +339,10 @@ int tfa_lowestfreq(int arr[] , int n)
         int min = store_freq[0] ;
         int num ;
         for(int i = 0 ; i < c ; i++  )
+
         {
             if(min > store_freq[i])
+
             {
                 min = store_freq[i];
                 num = store_num[i];
@@ -282,10 +354,12 @@ int tfa_lowestfreq(int arr[] , int n)
 
 //                  Special Numbers
 void sn_special_num(int arr[], int n )
+
     {
         int c = 0 ;
         int store[n];
         for(int i = 0 ; i <n ; i++ )
+
         {
             int a = arr[i] ;
             int sum = 0;
@@ -308,6 +382,7 @@ void sn_special_num(int arr[], int n )
         }
         printf("\n\nThe special numbers among the array are : ");
         for(int k = 0 ; k < c ; k++)
+
         {
             printf("%d ", store[k]);
         }
@@ -316,6 +391,7 @@ void sn_special_num(int arr[], int n )
 
 
 void sn_armstrong(int arr[], int n )
+
     {
         int c = 0 ;
         int store[n];
@@ -404,7 +480,8 @@ int sn_Niven_num(int arr[], int n )
     }
 
 
-void sn_sophie_num(int arr[] , int n )
+int sn_sophie_num(int arr[] , int n )
+
     {
         int arr2[n];
         int c = 0 ;
@@ -424,23 +501,19 @@ void sn_sophie_num(int arr[] , int n )
             }
         }
         if(c == 0)
-            printf("\n\nNo Sophie German prime number is present in the entered array  \n\n");
+            printf("No Sophie German prime number is present in the entered array  ");
         else
             {
-                printf("\n\nThe Sophie German prime number in the array are ");
-
-                for(int i = 0 ; i < c ; i++ ){
-
-                    printf("%d \n\n", arr2[i]);
-                }
-                printf("/n/n");
-
+                printf("The Sophie German prime number in the array are ");
+                for(int i = 0 ; i < c ; i++ )
+                printf("%d ", arr2[i]);
 
             }
 
     }
 
-void abundant_num(int arr[] , int n )
+int abundant_num(int arr[] , int n )
+
     {
         int arr2[n];
         int c = 0 ;
@@ -460,21 +533,21 @@ void abundant_num(int arr[] , int n )
             }
         }
         if(c == 0)
-            printf("\n\nNo Abundant number is present in the entered array  \n\n");
+            printf("No Abundant number is present in the entered array  ");
         else
             {
-                printf("\n\nThe Abundant number in the array are ");
+                printf("The Abundant number in the array are ");
                 for(int i = 0 ; i < c ; i++ )
                 {
                     printf("%d ", arr2[i]);
                 }
-                printf("/n/n");
 
             }
 
     }
 
-void deficient_num(int arr[] , int n )
+int deficient_num(int arr[] , int n )
+
     {
         int arr2[n];
         int c = 0 ;
@@ -494,15 +567,14 @@ void deficient_num(int arr[] , int n )
             }
         }
         if(c == 0)
-            printf("\n\nNo Deficient number is present in the entered array  \n\n");
+            printf("No Deficient number is present in the entered array  ");
         else
             {
-                printf("\n\nThe Deficient numbers in the array are ");
+                printf("The Deficient numbers in the array are ");
                 for(int i = 0 ; i < c ; i++ )
                 {
                     printf("%d ", arr2[i]);
                 }
-                printf("/n/n");
 
             }
     }
@@ -510,6 +582,7 @@ void deficient_num(int arr[] , int n )
 //                     Edit array
 
 void ea_insert(int arr[] , int n , int index, int nu)
+
     {
         if (index < 0 || index > n)
         {
@@ -535,6 +608,7 @@ void ea_insert(int arr[] , int n , int index, int nu)
 
 
 void ea_delete(int arr[], int n, int index)
+
     {
         if (index < 0 || index >= n)
         {
@@ -558,6 +632,7 @@ void ea_delete(int arr[], int n, int index)
     }
 
 void ea_swap(int arr[], int n, int index1, int index2)
+
     {
         int temp = arr[index1];
         arr[index1] = arr[index2];
@@ -565,19 +640,24 @@ void ea_swap(int arr[], int n, int index1, int index2)
 
         printf("\n\nArray after swapping elements at index %d and %d:", index1, index2);
         for (int i = 0; i < n; i++)
+
         {
             printf("%d ", arr[i]);
         }
+
         printf("\n\n");
     }
 
 void ea_update(int arr[], int n, int old_val, int new_val)
+
     {
         int updated = 0;
 
         for (int i = 0; i < n; i++)
+
         {
             if (arr[i] == old_val)
+
             {
                 arr[i] = new_val;
                 updated = 1;
@@ -588,6 +668,7 @@ void ea_update(int arr[], int n, int old_val, int new_val)
         {
             printf("Array after updating elements: ");
             for (int i = 0; i < n; i++)
+
             {
                 printf("%d ", arr[i]);
             }
@@ -600,6 +681,7 @@ void ea_update(int arr[], int n, int old_val, int new_val)
     }
 
 void ea_updateindex(int arr[], int n, int index, int new_val)
+
     {
         if (index < 0 || index >= n)
         {
@@ -618,6 +700,7 @@ void ea_updateindex(int arr[], int n, int index, int new_val)
     }
 
 void ea_append(int *arr , int n , int append)
+
     {
 
         arr[n] = append ;
@@ -632,31 +715,42 @@ void ea_append(int *arr , int n , int append)
     }
 
 
-int main() {
-    printf("\t\t\t-------- LET'S HAVE FUN WITH ARRAYS -------------\n\n");
-    printf("We provide various operations on Arrays. SO LET'S GET STARTED:\n");
+int main()
 
-    printf("Enter the size of your Array: ");
-    int n;
-    scanf("%d", &n);
-    int arr[n];
+    {
+        printf("\t\t\t-------- LET'S HAVE FUN WITH ARRAYS -------------\n\n");
+        printf("We provide various operations on Arrays. SO LET'S GET STARTED:\n");
+
+        printf("Enter the size of your Array: ");
+        int n;
+        scanf("%d", &n);
+        int arr[n];
 
     // Input the elements in the array
-    for (int i = 0; i < n; i++) {
-        printf("Enter the %d element of your array: ", i + 1);
-        scanf("%d", &arr[i]);
-    }
+
+    for (int i = 0; i < n; i++)
+
+        {
+            printf("Enter the %d element of your array: ", i + 1);
+            scanf("%d", &arr[i]);
+        }
 
     // Display the entered array
+
     printf("\n\t\tHere is your array: ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+    for (int i = 0; i < n; i++)
+
+        {
+            printf("%d ", arr[i]);
+        }
+
+        printf("\n");
 
     int option;
     do {
+
         // Displaying the main options
+
         printf("\nChoose operation to perform from the following list:\n");
         printf("Basic Arithmetic (Type 1)\n");
         printf("Sort the Array (Type 2)\n");
@@ -668,8 +762,12 @@ int main() {
         printf("\nEnter your option: ");
         scanf("%d", &option);
 
-        switch (option) {
-            case 1: {  // Basic Arithmetic
+        switch (option)
+        {
+            case 1:
+
+                {
+                    // Basic Arithmetic
 
                 int option_BA;
                 do {
@@ -685,58 +783,90 @@ int main() {
                     printf("Enter your option: ");
                     scanf("%d", &option_BA);
 
-                    switch (option_BA) {
+                    switch (option_BA)
+                    {
                         case 0:
-                            break; // Exit to the main menu
+
+                            {
+                                break; // Exit to the main menu
+                            }
                         case 1:
+
+                            {
+
                             printf("\n\nSum of all elements is: %d\n\n", ba_sumall(arr, n));
                             break;
-                        case 2: {
+                            }
+                        case 2:
+
+                            {
                             int i1, i2;
                             printf("\nEnter the two indices (separated by space): ");
                             scanf("%d %d", &i1, &i2);
                             int sum = ba_sumindex(arr, n, i1, i2);
-                            if (sum != -1) {
+                            if (sum != -1)
+                            {
                                 printf("\n\nSum of elements at index %d and %d is: %d\n\n", i1, i2, sum);
-                            } else {
-                                printf("\n\nError: Indices out of bounds.\n\n");
                             }
+                            else
+                                {
+                                printf("\n\nError: Indices out of bounds.\n\n");
+                                }
                             break;
-                        }
-                        case 3: {
+                            }
+                        case 3:
+
+                            {
                             int i1, i2;
                             printf("\nEnter the two indices (separated by space): ");
                             scanf("%d %d", &i1, &i2);
                             int subs = ba_subsIndex(arr, n, i1, i2);
                             printf("\n\nSubtraction of elements at index %d and %d is: %d\n\nv", i1, i2, subs);
                             break;
-                        }
+                            }
                         case 4:
+
+                            {
+
                             printf("\n\nMultiplication of all elements is: %d\n", ba_multall(arr, n));
                             break;
-                        case 5: {
+
+                            }
+                        case 5:
+
+                            {
                             int i1, i2;
                             printf("\nEnter the two indices (separated by space): ");
                             scanf("%d %d", &i1, &i2);
                             int multindex = ba_multIndex(arr, n, i1, i2);
                             printf("\n\nMultiplication of elements at index %d and %d is: %d\n\n", i1, i2, multindex);
                             break;
-                        }
-                        case 6: {
+                            }
+                        case 6:
+
+                            {
                             int i1, i2;
                             printf("Enter the two indices (separated by space): ");
                             scanf("%d %d", &i1, &i2);
                             int divindex = ba_divIndex(arr, n, i1, i2);
                             printf("\n\nDivision of elements at index %d and %d is: %d\n\n", i1, i2, divindex);
                             break;
-                        }
-                        default:
-                            printf("Invalid option. Please try again.\n");
+                            }
+                            default:
+
+                            {
+                                printf("Invalid option. Please try again.\n");
+                            }
                     }
                 } while (option_BA != 0);
-                break;
+                {
+                    break;
+                }
             }
-            case 2: {   // Sorting Arrays
+            case 2:
+
+                {
+                     // Sorting Arrays
 
                 int option_SA;
                 do {
@@ -751,56 +881,79 @@ int main() {
                     printf("Enter your option: ");
                     scanf("%d", &option_SA);
 
-                    switch (option_SA) {
+                    switch (option_SA)
+                    {
                         case 0:
-                            break;
+                            {
+                                break;
+                            }
                         case 1:
-                            sa_increasing(arr, n);
-                            printf("Here is your Array in Increasing order: ");
-                            for (int i = 0; i < n; i++) {
+                            {
+                                sa_increasing(arr, n);
+                                printf("Here is your Array in Increasing order: ");
+                                for (int i = 0; i < n; i++)
+                                {
                                 printf("%d ", arr[i]);
+                                }
+                                printf("\n");
+                                break;
                             }
-                            printf("\n");
-                            break;
                         case 2:
-                            sa_decreasing(arr, n);
-                            printf("Here is your Array in Decreasing order: ");
-                            for (int i = 0; i < n; i++) {
+                            {
+                                sa_decreasing(arr, n);
+                                printf("Here is your Array in Decreasing order: ");
+                                for (int i = 0; i < n; i++)
+                                {
                                 printf("%d ", arr[i]);
+                                }
+                                printf("\n");
+                                break;
                             }
-                            printf("\n");
-                            break;
                         case 3:
-                            sa_leftshift(arr, n);
-                            printf("Here is your Array after Left shifting: ");
-                            for (int i = 0; i < n; i++) {
+                            {
+
+                                sa_leftshift(arr, n);
+                                printf("Here is your Array after Left shifting: ");
+                                for (int i = 0; i < n; i++)
+                                {
                                 printf("%d ", arr[i]);
+                                }
+                                printf("\n");
+                                break;
                             }
-                            printf("\n");
-                            break;
                         case 4:
-                            sa_rightshift(arr, n);
-                            printf("Here is your Array after Right shifting: ");
-                            for (int i = 0; i < n; i++) {
+                            {
+                                sa_rightshift(arr, n);
+                                printf("Here is your Array after Right shifting: ");
+                                for (int i = 0; i < n; i++)
+                                    {
                                 printf("%d ", arr[i]);
-                            }
+                                }
                             printf("\n");
                             break;
+                            }
                         case 5:
+                            {
                             sa_reverse(arr, n);
                             printf("Here is your Reversed Array: ");
-                            for (int i = 0; i < n; i++) {
+                            for (int i = 0; i < n; i++)
+                                {
                                 printf("%d ", arr[i]);
-                            }
+                                }
                             printf("\n");
                             break;
+                            }
                         default:
+                            {
                             printf("Invalid option. Please try again.\n");
+                            }
                     }
                 } while (option_SA != 0);
                 break;
             }
-            case 3: {  // To Find in Array
+            case 3:
+
+                {
                 // To Find in Array
                 int option_TFA;
                 do {
@@ -816,34 +969,58 @@ int main() {
                     printf("\nEnter your option: ");
                     scanf("%d", &option_TFA);
 
-                    switch (option_TFA) {
+                    switch (option_TFA)
+                    {
                         case 0:
-                            break;
+                            {
+                                break;
+                            }
                         case 1:
+                            {
                             printf("\n\nLargest number in the array is: %d\n\n", tfa_larno(arr, n));
                             break;
+                            }
                         case 2:
-                            printf("\n\nSmallest number in the array is: %d\n\n", tfa_smallnum(arr, n));
+                            {
+                                printf("\n\nSmallest number in the array is: %d\n\n", tfa_smallnum(arr, n));
                             break;
+                            }
                         case 3:
-                            printf("\n\nAverage of the numbers in the array is: %f\n\n", tfa_average(arr, n));
+                            {
+                                printf("\n\nAverage of the numbers in the array is: %f\n\n", tfa_average(arr, n));
                             break;
+                            }
                         case 4:
-                            tfa_everyfreq(arr, n);
+                            {
+                                tfa_everyfreq(arr, n);
                             break;
+                            }
                         case 5:
-                            tfa_larfreq(arr, n);
+                            {
+                                tfa_larfreq(arr, n);
                             break;
+                            }
                         case 6:
-                            tfa_lowestfreq(arr, n);
+                            {
+
+                                tfa_lowestfreq(arr, n);
                             break;
+                            }
                         default:
-                            printf("\n\nInvalid option. Please try again.\n\n");
+                            {
+                                printf("\n\nInvalid option. Please try again.\n\n");
+                            }
                     }
                 } while (option_TFA != 0);
-                break;
+
+                {
+                    break;
+                }
             }
-            case 4: {  // Edit Array
+            case 4:
+
+                {
+                    // Edit Array
 
                 int option_EA;
                 do {
@@ -859,10 +1036,15 @@ int main() {
                     printf("Enter your option: ");
                     scanf("%d", &option_EA);
 
-                    switch (option_EA) {
+                    switch (option_EA)
+                    {
                         case 0:
+                           {
+
                             break;
-                        case 1: {
+                           }
+                        case 1:
+                            {
                             int index, nu;
                             printf("Enter the index: ");
                             scanf("%d", &index);
@@ -870,15 +1052,17 @@ int main() {
                             scanf("%d", &nu);
                             ea_insert(arr, n, index, nu);
                             break;
-                        }
-                        case 2: {
+                            }
+                        case 2:
+                            {
                             int index;
                             printf("Enter the index to delete: ");
                             scanf("%d", &index);
                             ea_delete(arr, n, index);
                             break;
-                        }
-                        case 3: {
+                            }
+                        case 3:
+                            {
                             int index1, index2;
                             printf("Enter the first index: ");
                             scanf("%d", &index1);
@@ -886,8 +1070,10 @@ int main() {
                             scanf("%d", &index2);
                             ea_swap(arr, n, index1, index2);
                             break;
-                        }
-                        case 4: {
+                            }
+
+                        case 4:
+                            {
                             int old_val, new_val;
                             printf("Enter the old value: ");
                             scanf("%d", &old_val);
@@ -895,8 +1081,11 @@ int main() {
                             scanf("%d", &new_val);
                             ea_update(arr, n, old_val, new_val);
                             break;
-                        }
-                        case 5: {
+                            }
+
+                        case 5:
+
+                            {
                             int index, new_val;
                             printf("Enter the index: ");
                             scanf("%d", &index);
@@ -904,21 +1093,30 @@ int main() {
                             scanf("%d", &new_val);
                             ea_updateindex(arr, n, index, new_val);
                             break;
-                        }
-                        case 6: {
+                            }
+
+                        case 6:
+                             {
                             int append_num;
                             printf("Enter the number to append: ");
                             scanf("%d", &append_num);
                             ea_append(arr, n, append_num);
                             break;
-                        }
+                            }
                         default:
-                            printf("Invalid option. Please try again.\n");
+                            {
+                                printf("Invalid option. Please try again.\n");
+                            }
+
                     }
                 } while (option_EA != 0);
-                break;
+               {
+                 break;
+               }
             }
-            case 5: {
+            case 5:
+
+                {
                 // Special numbers in Array
                 int option_SN;
                 do {
@@ -935,41 +1133,69 @@ int main() {
                     printf("\nEnter your option: ");
                     scanf("%d", &option_SN);
 
-                    switch (option_SN) {
+                    switch (option_SN)
+                    {
                         case 0:
-                            break;
+                            {
+                                break;
+
+                            }
                         case 1:
-                            sn_special_num(arr, n);
+                            {
+                                sn_special_num(arr, n);
                             break;
+                            }
                         case 2:
                             sn_armstrong(arr, n);
                             break;
                         case 3:
-                            sn_pallindrome(arr, n);
+                            {
+                                sn_pallindrome(arr, n);
                             break;
+                            }
                         case 4:
-                            sn_Niven_num(arr, n);
+                            {
+                                sn_Niven_num(arr, n);
                             break;
+                            }
                         case 5:
-                            sn_sophie_num(arr, n);
+                            {
+                                sn_sophie_num(arr, n);
                             break;
+
+                            }
                         case 6:
-                            abundant_num(arr, n);
+                            {
+                                abundant_num(arr, n);
                             break;
+                            }
                         case 7:
-                            deficient_num(arr, n);
+                            {
+                                deficient_num(arr, n);
                             break;
+                            }
                         default:
-                            printf("Invalid option. Please try again.\n");
+                            {
+                                printf("Invalid option. Please try again.\n");
+                            }
+
                     }
                 } while (option_SN != 0);
-                break;
+                {
+                    break;
+                }
             }
             case 0:
-                printf("Exiting the program. Goodbye!\n");
+
+                {
+                    printf("Exiting the program. Goodbye!\n");
                 break;
+                }
             default:
-                printf("Invalid option. Please try again.\n");
+
+                {
+                    printf("Invalid option. Please try again.\n");
+                }
         }
     } while (option != 0);
 
