@@ -469,7 +469,6 @@ int sn_Niven_num(int arr[], int n )
             {
                 store[c] = arr[i];
                 c++ ;
-                int temp ;
             }
         }
         printf("\n\nThe Niven among the array are : ");
