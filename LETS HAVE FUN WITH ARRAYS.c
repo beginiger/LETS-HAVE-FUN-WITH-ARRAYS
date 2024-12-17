@@ -11,8 +11,7 @@ int ba_sumall(int arr[], int n)
     {
         sum += arr[i];
     }
-
-    return sum;
+    return sum ;
 }
 
 // Function to sum two elements based on their indices
@@ -446,6 +445,7 @@ void sn_pallindrome(int arr[], int n )
         {
             printf("%d ", store[k]);
         }
+        
         printf("\n\n");
     }
 
@@ -469,6 +469,7 @@ int sn_Niven_num(int arr[], int n )
             {
                 store[c] = arr[i];
                 c++ ;
+                int temp ;
             }
         }
         printf("\n\nThe Niven among the array are : ");
